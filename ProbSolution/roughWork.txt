@@ -1,0 +1,124 @@
+import java.util.*;
+class Main {
+    
+    public static boolean isValid(String str, Stack<Character> stk){
+        //Stack<Character> stk = new Stack<>();
+        
+        int length = str.length();
+        
+        for(int i=0;i<length;i++){
+            char ch = str.charAt(i);
+            
+            if(openBrace(ch)) stk.push(ch);
+            
+            else{
+                
+                if(stk.isEmpty()) return false;
+                char temp = stk.pop();
+                
+                if(!isMatch(temp, ch)) return false;
+                
+            }
+        }
+        return stk.empty();
+    }
+            
+    
+    public static boolean isMatch(char op, char cp){
+        if(op == '(' && cp == ')') return true;
+        if(op == '{' && cp == '}') return true;
+        if(op == '[' && cp == ']') return true;
+        return false;
+    }
+    
+    public static boolean openBrace(char ch){
+        if(ch == '(' || ch == '{' || ch == '['){
+        // System.out.println(ch);
+        return true;
+        }
+        return false;
+    }
+    
+    
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int test = sc.nextInt();
+        
+        while(test-->0){
+            Stack<Character> stk = new Stack<>();
+            String str = sc.next();
+            
+            if(isValid(str, stk)) System.out.println("Yes");
+            else System.out.println("No");
+            
+            
+        }
+    }
+}
+
+
+
+
+
+
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    int ans=0;
+    while(m>n){
+        if(m%2==1)//m is odd increase it by 1
+        {
+        m++;
+        ans++;
+        }
+        else{
+            m=m/2;
+            ans++;
+        }
+    }
+    ans=ans+(n-m);
+    cout<<ans<<endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, h, m, width = 0;
+    cin >> n;
+    cin >> h;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> m;
+        if (m > h)
+        {
+            width += 2;
+        }
+        else
+        {
+            width++;
+        }
+    }
+    cout << width;
+    return 0;
+}
