@@ -48,19 +48,19 @@ bool Search(BSTNode *root, int data)
         return Search(root->right, data);
 }
 
-int main()
-{
-    BSTNode *rootPtr; // pointer to root node
-    rootPtr = NULL;   // setting tree as empty
-    rootPtr = Insert(rootPtr, 15);
-    rootPtr = Insert(rootPtr, 10);
-    rootPtr = Insert(rootPtr, 5);
-    rootPtr = Insert(rootPtr, 12);
-    rootPtr = Insert(rootPtr, 20);
-    rootPtr = Insert(rootPtr, 16);
-    rootPtr = Insert(rootPtr, 22);
-    int n;
-    cin >> n;
-    Search(rootPtr, n) ? cout << "Found\n" : cout << "Not Found\n";
-    return 0;
-}
+// int main()
+// {
+//     BSTNode *rootPtr; // pointer to root node
+//     rootPtr = NULL;   // setting tree as empty
+//     rootPtr = Insert(rootPtr, 15);
+//     rootPtr = Insert(rootPtr, 10);
+//     rootPtr = Insert(rootPtr, 5);
+//     rootPtr = Insert(rootPtr, 12);
+//     rootPtr = Insert(rootPtr, 20);
+//     rootPtr = Insert(rootPtr, 16);
+//     rootPtr = Insert(rootPtr, 22);
+//     int n;
+//     cin >> n;
+//     Search(rootPtr, n) ? cout << "Found\n" : cout << "Not Found\n";
+//     return 0;
+// }
