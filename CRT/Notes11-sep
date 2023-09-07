@@ -1,0 +1,35 @@
+declare frequency map : key-char, value-int
+ws = 0,we = 0,mx=0;
+for loop we=0;we<n;we++:
+    ch = str[we]
+    update freq of ch
+    if good window:
+        update mx with we-ws+1;
+    else bad window:
+        while it is not still a good window:
+            remove str[ws] from freq
+            ws++
+        update mx one more time
+
+class solution{
+    public int length(String str){
+        Map<Character, Integer> freq = new HashMap<>();
+        int ws = 0, we = 0, mx = 0, n = str.length();
+        for(we=0;we<n;we++){
+            char ch = str.charAt(we);
+            freq.put(ch, freq.getOrDefault(ch, 0)+1);
+            if(freq.size() <= 2){
+                mx = Math.max(mx, we-ws+1);
+            }else{
+                while(freq.size() > 2){
+                    char ch1 = str.charAt(ws);
+                    freq.put(ch1, freq.get(ch1)-1);
+                    if(freq.get(ch1) == 0){
+                        freq.remove(ch1);
+                    }
+                    ws++;
+                }
+            }    
+        }
+    }
+}

@@ -1,67 +1,40 @@
 #include <iostream>
-#include <set>
-#include <vector>
-
+#include <unordered_set>
 using namespace std;
-
-int calculateFriendsOfFriends(int N, vector<vector<int>> &friendData)
-{
-    set<int> lakshFriends;
-    set<int> friendsOfFriends;
-
-    for (int i = 0; i < N; i++)
-    {
-        int friendId, M;
-        cin >> friendId >> M;
-        lakshFriends.insert(friendId);
-
-        for (int j = 0; j < M; j++)
-        {
-            int friendOfFriend;
-            cin >> friendOfFriend;
-            friendsOfFriends.insert(friendOfFriend);
-        }
-    }
-
-    // Remove Laksh and his direct friends from the set of friends of friends
-    for (int friendId : lakshFriends)
-    {
-        friendsOfFriends.erase(friendId);
-    }
-
-    return friendsOfFriends.size();
-}
 
 int main()
 {
     int T;
     cin >> T;
 
-    for (int i = 0; i < T; i++)
+    for (int t = 0; t < T; t++)
     {
-        int N;
-        cin >> N;
+        int n;
+        cin >> n;
 
-        vector<vector<int>> friendData;
-        for (int j = 0; j < N; j++)
+        unordered_set<int> set1;
+        unordered_set<int> set2;
+
+        for (int i = 0; i < n; i++)
         {
-            int friendId, M;
-            cin >> friendId >> M;
+            int id, m;
+            cin >> id >> m;
 
-            vector<int> friends;
-            for (int k = 0; k < M; k++)
+            for (int j = 0; j < m; j++)
             {
-                int friendOfFriend;
-                cin >> friendOfFriend;
-                friends.push_back(friendOfFriend);
+                int fid;
+                cin >> fid;
+                set1.insert(id);
+                set2.insert(fid);
             }
-
-            friendData.push_back({friendId, M});
-            friendData.back().insert(friendData.back().end(), friends.begin(), friends.end());
         }
 
-        int result = calculateFriendsOfFriends(N, friendData);
-        cout << result << endl;
+        for (int id : set1)
+        {
+            set2.erase(id);
+        }
+
+        cout << set2.size() << endl;
     }
 
     return 0;

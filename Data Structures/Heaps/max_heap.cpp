@@ -5,72 +5,87 @@ using namespace std;
 
 vector<int> sortedHeap;
 
-void swap(int *a,int *b){
+void swap(int *a, int *b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 //  heapify
 
-void heapify(vector<int> &hp, int i){ // pass the ref of arr and i th node
+void heapify(vector<int> &hp, int i)
+{ // pass the ref of arr and i th node
     int size = hp.size();
-    int par = i; // init the i as largest
+    int par = i;       // init the i as largest
     int l = 2 * i + 1; // left child
     int r = 2 * i + 2; // right child
 
-    if (l < size && hp[l] > hp[par]){
+    if (l < size && hp[l] > hp[par])
+    {
         par = l;
     }
-    if (r < size && hp[r] > hp[par]){
+    if (r < size && hp[r] > hp[par])
+    {
         par = r;
     }
-    if(par != i){
-        swap(&hp[i],&hp[par]);
-        heapify(hp,par);
+    if (par != i)
+    {
+        swap(&hp[i], &hp[par]);
+        heapify(hp, par);
     }
 }
 
-void insert(vector<int> &hp, int item){
+void insert(vector<int> &hp, int item)
+{
     int s = hp.size();
-    if(s == 0){
+    if (s == 0)
+    {
         hp.push_back(item);
     }
-    else{
+    else
+    {
         hp.push_back(item);
-        for(int i = s / 2 - 1  ; i >= 0; i--)
-            heapify(hp,i);
+        for (int i = s / 2 - 1; i >= 0; i--)
+            heapify(hp, i);
     }
 }
 
-void deleteItem(vector<int> &hp, int delItem){
+void deleteItem(vector<int> &hp, int delItem)
+{
     int s = hp.size();
-    int i=0; // initialize i , we need the scope of i throught the function
-    for(i=0 ; i < s;i++){
-        if(hp[i] == delItem)
+    int i = 0; // initialize i , we need the scope of i throught the function
+    for (i = 0; i < s; i++)
+    {
+        if (hp[i] == delItem)
             break;
     }
-    swap(&hp[i],&hp[s-1]); // swap the ele with last element
-    sortedHeap.push_back(hp[s-1]);
-    hp.pop_back(); // del the ele
-    for(int i= s / 2 - 1; i >= 0; i--) // heapfiy the rest
-        heapify(hp,i);
+    swap(&hp[i], &hp[s - 1]); // swap the ele with last element
+    sortedHeap.push_back(hp[s - 1]);
+    hp.pop_back();                       // del the ele
+    for (int i = s / 2 - 1; i >= 0; i--) // heapfiy the rest
+        heapify(hp, i);
 }
-void heapsort(vector<int> &hp){
-    for(int i=0; i<hp.size();i++){
-        deleteItem(hp,hp[i]);
+void heapsort(vector<int> &hp)
+{
+    for (int i = 0; i < hp.size(); i++)
+    {
+        deleteItem(hp, hp[i]);
     }
 }
-void printHeap(vector<int> &hp){
-    for(int i = 0 ; i < hp.size();i++)
-        cout<<hp[i]<<" ";
-    cout<<"\n";
+void printHeap(vector<int> &hp)
+{
+    for (int i = 0; i < hp.size(); i++)
+        cout << hp[i] << " ";
+    cout << "\n";
 }
 
-void findMax(vector<int> &hp){
-    cout<<hp[0]<<" ";
+void findMax(vector<int> &hp)
+{
+    cout << hp[0] << " ";
 }
 
-int main(){
+int main()
+{
     vector<int> heap;
 
     insert(heap, 3);
@@ -82,8 +97,6 @@ int main(){
     insert(heap, 45);
     insert(heap, 12);
     insert(heap, 7);
-
-
 
     cout << "Max-Heap array: ";
     printHeap(heap);

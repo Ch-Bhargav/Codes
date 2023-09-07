@@ -82,3 +82,145 @@ vector<int> uniq(int a[],int k){
         //end of java
     }
 }
+
+
+
+
+
+
+
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int t=0;t<T;t++)
+        {
+            int n = sc.nextInt();
+            Set<Integer> set1 = new HashSet<>();
+            Set<Integer> set2 = new HashSet<>();
+            for(int i=0;i<n;i++)
+            {
+                int id = sc.nextInt();
+                int m = sc.nextInt();
+                for(int j=0;j<m;j++)
+                {
+                    int fid = sc.nextInt();
+                    set1.add(id);
+                    set2.add(fid);
+                }
+            }
+            set2.removeAll(set1);
+            System.out.println(set2.size());
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        int t=sc.nextInt();
+        for(int j=1;j<=t;j++)
+        {
+            int n=sc.nextInt();
+            int m=sc.nextInt();
+            
+            Map<Integer, Set<Integer>> mp=new HashMap<>();
+            boolean ans=false;
+            for(int i=0;i<m;i++)
+            {
+                int id=sc.nextInt();
+                int code=sc.nextInt();
+                
+                if(!mp.containsKey(id))
+                {
+                    mp.put(id, new HashSet<>());
+                    
+                }
+                Set<Integer> st= mp.get(id);
+                
+                if(st.contains(code))
+                {
+                    ans=true;
+                }
+                else
+                {
+                    st.add(code);
+                }
+            }
+            if(ans)
+            {
+                System.out.println("Scenario #"+j+": impossible");
+            }
+            else
+            {
+                System.out.println("Scenario #"+j+": possible");
+            }
+            
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+class Main
+{
+public
+    static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while ((t--) > 0)
+        {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = sc.nextInt();
+            }
+            int max = 0;
+            int sum = 0;
+            Map<Integer, Integer> mp = new HashMap<>();
+            mp.put(0, -1);
+            for (int i = 0; i < n; i++)
+            {
+                sum += arr[i];
+
+                if (mp.containsKey(sum))
+                {
+                    max = Math.max(max, i - mp.get(sum));
+                }
+                else
+                {
+                    mp.put(sum, i);
+                }
+            }
+            System.out.println(max);
+        }
+    }
+}
