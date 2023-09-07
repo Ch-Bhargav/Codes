@@ -1,0 +1,84 @@
+int n = a.length;
+		long sum = 0;
+		for(int i=0; i<k; i++){
+			sum += a[i];
+		}
+		long mx = sum;
+		for(int i=1; i<=n-k; i++){
+			sum = sum - a[i-1] + a[i+k-1];
+			mx = Math.max(mx, sum);
+		}
+		return mx;
+
+
+
+        
+        // C++ program to count distinct
+// elements in every window of size K
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Counts distinct elements in window of size K
+int countWindowDistinct(int win[], int K)
+{
+	int dist_count = 0;
+
+	// Traverse the window
+	for (int i = 0; i < K; i++) {
+		// Check if element arr[i] exists in arr[0..i-1]
+		int j;
+		for (j = 0; j < i; j++)
+			if (win[i] == win[j])
+				break;
+		if (j == i)
+			dist_count++;
+	}
+	return dist_count;
+}
+
+// Counts distinct elements in all windows of size k
+void countDistinct(int arr[], int N, int K)
+{
+	// Traverse through every window
+	for (int i = 0; i <= N - K; i++)
+		cout << countWindowDistinct(arr + i, K) << endl;
+}
+
+// Driver's code
+int main()
+{
+	int arr[] = {1, 2, 1, 3, 4, 2, 3}, K = 4;
+	int N = sizeof(arr) / sizeof(arr[0]);
+
+	// Function call
+	countDistinct(arr, N, K);
+	return 0;
+}
+
+
+vector<int> uniq(int a[],int k){
+    vector<int> res;
+    int n = a.size();
+    nap<int,int> freq;
+    for(int i=0;i<k;i++){
+        freq[a[i]]+=1;
+    }
+    for(int i=1;i<n-l+1;i++){
+        // java bro
+        int rem = arr[i - 1];
+        int add = arr[i + k - 1];
+        freq[rem]--;
+        if (freq[rem] == 0) 
+            freq.erase(rem);
+        freq[add]++;
+        res.push_back(freq.size());
+        /*int rem = arr[i-1],add = arr[i+k-1];
+        freq.put(rem,freq.get(rem)-1);
+        if(freq.get(rem) == 0)
+            freq.remove(rem);
+        freq.put(add, 1+freq.getOrDefault(add,0));
+        res.add(freq.size());*/
+        //end of java
+    }
+}

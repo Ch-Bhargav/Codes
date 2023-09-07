@@ -42,10 +42,10 @@ int main()
         std::vector<std::vector<int>> edges = result.second;
 
         std::cout << minDistance << " True" << std::endl;
-        for (const std::vector<int> &edge : edges)
-        {
-            std::cout << edge[0] << " " << edge[1] << std::endl;
-        }
+        // for (const std::vector<int> &edge : edges)
+        // {
+        //     std::cout << edge[0] << " " << edge[1] << std::endl;
+        // }
     }
 
     return 0;

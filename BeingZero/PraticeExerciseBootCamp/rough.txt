@@ -1,0 +1,176 @@
+Exercise Number: 1
+Language: C++
+Code Link: https://ideone.com/naKt64
+
+Exercise Number: 2
+Language: C++
+Code Link: https://ideone.com/b2sgYp
+
+Exercise Number: 3
+Language: C++
+Code Link: https://ideone.com/ahTgwS
+
+Exercise Number: 4
+Language: C++
+Code Link: https://ideone.com/ManzXE
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve(){
+	int n;
+	cin>>n;
+	map<int, vector<int>> mp;
+	for(int i = 0; i<n-1; i++){
+		int x, y;
+		cin>>x>>y;
+		mp[x].push_back(y);
+		mp[y].push_back(x);
+	}
+	
+	for(auto k: mp){
+		cout<<k.first<<" : ";
+		for(auto l: k.second) cout<<l<<" ";
+		cout<<endl;
+	}
+	cout<<endl;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+// Exercise no. 2 -> finding the root which has maximum no. of neighbours
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int max_root(vector<vector<int>> &a, int n){
+	int maxi(0), ans;
+	for(int i = 1; i <= n; i++){
+		if(maxi < a[i].size()){
+			maxi = a[i].size();
+			ans = i;
+		}
+	}
+	return ans;
+}
+
+void solve(){
+	int n;
+	cin>>n;
+	vector<vector<int>> a(n+1);
+	for(int i = 0; i<n-1; i++){
+		int x, y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+	
+	cout<<max_root(a, n)<<endl;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+// Exercise 3: DFS traversal
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void dfs(vector<vector<int>> &a, int node, int pare){
+	cout<<node<<" ";
+	for(auto x: a[node]) if(x != pare) dfs(a, x, node);
+}
+ 
+void solve(){
+	int n;
+	cin>>n;
+	vector<vector<int>> a(n+1);
+	for(int i = 0; i<n-1; i++){
+		int x, y;
+		cin>>x>>y;
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+ 
+	dfs(a, 1, 0);
+	cout<<endl;
+}
+ 
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+	return 0;
+}   
+
+
+
+
+
+// Exercise 4: DFS traversal with different type of input
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void dfs(vector<vector<int>> &a, int node, int pare){
+	cout<<node<<" ";
+	for(auto x: a[node]) dfs(a, x, node);
+}
+ 
+void solve(){
+	int n;
+	cin>>n;
+	vector<vector<int>> a(n+1);
+	for(int i = 2; i<=n; i++){
+		int x;
+		cin>>x;
+		a[x].push_back(i);
+	}
+ 
+	dfs(a, 1, 0);
+	cout<<endl;
+}
+ 
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+	return 0;
+}
