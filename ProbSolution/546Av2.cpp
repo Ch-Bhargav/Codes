@@ -14,6 +14,7 @@ int main()
     {
         cout << difference << endl;
     }
+
     else
     {
         cout << 0 << endl;
