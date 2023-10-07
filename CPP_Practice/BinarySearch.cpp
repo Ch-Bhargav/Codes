@@ -114,7 +114,7 @@ bool returnNoArgsBinarySearch()
         int mid = (low + high) / 2;
         if (tara[mid] == key)
         {
-            rtuen true;
+            return true;
         }
         else if (tara[mid] > key)
             high = mid - 1;
