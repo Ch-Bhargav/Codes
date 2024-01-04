@@ -1,0 +1,11 @@
+algorithm-1 03-01-2024
+list.add()
+while(p[x]!=-1)
+    list.add(p[x])
+    x=p[x]
+rev.list
+
+
+Home- work Problem
+
+given undirected weighted graph graph print the adjmatrix
